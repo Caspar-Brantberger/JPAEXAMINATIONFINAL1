@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequestMapping("/channel")
 @RestController
@@ -21,8 +22,10 @@ public class ChannelController {
         return channelService.getChannel();
     }
     @GetMapping("/{id}")
-    public List <Channel> getChannelById(Long id) {
-        return channelService.getChannel();
+    public Optional<Channel> getChannelById(@PathVariable Long id) {
+        Optional<Channel> channel = channelService.getChannelById(id);
+
+        return channelService.getChannelById(id);
     }
 
     @PostMapping
@@ -33,16 +36,16 @@ public class ChannelController {
         return ResponseEntity.ok(result);
     }
 
-    @PutMapping("/add")
-    public ResponseEntity<Channel> addMessageToChannel(Channel channel,long id) {
-        Channel newChannel = channelService.addMessageToChannel(channel,id);
+    @PutMapping("/{id}/add")
+    public ResponseEntity<Channel> addMessageToChannel(Channel newchannel) {
+        Channel newChannel = channelService.addChannelMessage(newchannel);
         return ResponseEntity.ok(newChannel);
     }
 
-    @PutMapping("/update")
+    @PutMapping("/{id}/update")
     public ResponseEntity<Channel> updateMessageFromChannel(@Valid @RequestBody Channel newChannel){
 
-        Channel channel = channelService.updateChannelMessage(newChannel);
+        Channel channel = channelService.updateMessageToChannel(newChannel);
 
         if (channel != null) {
             return ResponseEntity.accepted().body(newChannel);
