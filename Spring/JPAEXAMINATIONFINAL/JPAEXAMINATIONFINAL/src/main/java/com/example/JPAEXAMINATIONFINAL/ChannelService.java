@@ -32,10 +32,10 @@ public class ChannelService {
         repo.deleteById(id);
     }
 
-    public void deleteMessageFromChannel(Long id,String message) {
-        repo.deleteById(id);
+    public void deleteMessageFromChannel(long messageId) {
+        repo.deleteById(messageId);
     }
-    public Channel addMessageToChannel(Channel c,long id,String message) {
+    public Channel addMessageToChannel(Channel c,long id) {
         em.clear();
         return repo.save(c);
     }
