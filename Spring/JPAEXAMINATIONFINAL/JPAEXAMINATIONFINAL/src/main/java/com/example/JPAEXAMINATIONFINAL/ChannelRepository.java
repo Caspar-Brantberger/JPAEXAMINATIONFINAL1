@@ -8,7 +8,5 @@ import java.util.List;
 @Repository
 public interface ChannelRepository extends JpaRepository<Channel, Integer> {
 
-    void deleteById(
-            Long id
-    );
+
 }

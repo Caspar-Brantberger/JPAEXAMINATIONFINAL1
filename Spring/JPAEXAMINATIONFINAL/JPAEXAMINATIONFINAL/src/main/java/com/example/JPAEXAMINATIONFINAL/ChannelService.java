@@ -29,11 +29,11 @@ public class ChannelService {
         return channels;
     }
     public void deleteChannel(Long id) {
-        repo.deleteById(id);
+        repo.deleteById(Math.toIntExact(id));
     }
 
     public void deleteMessageFromChannel(long messageId) {
-        repo.deleteById(messageId);
+        repo.deleteById((int) messageId);
     }
     public Channel addMessageToChannel(Channel c,long id) {
         em.clear();

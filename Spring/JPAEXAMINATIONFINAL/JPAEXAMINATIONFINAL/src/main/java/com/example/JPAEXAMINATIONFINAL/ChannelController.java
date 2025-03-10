@@ -27,6 +27,7 @@ public class ChannelController {
 
     @PostMapping
     public ResponseEntity<Channel> createChannelByRequest(@Valid @RequestBody Channel channel) {
+
         Channel result = channelService.addChannel(channel);
 
         return ResponseEntity.ok(result);
@@ -38,8 +39,8 @@ public class ChannelController {
         return ResponseEntity.ok(newChannel);
     }
 
-    @PutMapping("/uppdate")
-    public ResponseEntity<Channel> uppdateMessageFromChannel(@Valid @RequestBody Channel newChannel){
+    @PutMapping("/update")
+    public ResponseEntity<Channel> updateMessageFromChannel(@Valid @RequestBody Channel newChannel){
 
         Channel channel = channelService.updateChannelMessage(newChannel);
 
@@ -50,13 +51,13 @@ public class ChannelController {
         }
     }
 
-    @DeleteMapping("/{id}/channel")
-    public void deleteChannel(Long id) {
+    @DeleteMapping("/{id}")
+    public void deleteChannel(@PathVariable Long id) {
         channelService.deleteChannel(id);
     }
 
-    @DeleteMapping("/{id}/message")
-    public void deleteMessageFromChannel(Long messageId) {
+    @DeleteMapping("/{messageId}/message")
+    public void deleteMessageFromChannel(@PathVariable Long messageId) {
         channelService.deleteMessageFromChannel(messageId);
     }
 
