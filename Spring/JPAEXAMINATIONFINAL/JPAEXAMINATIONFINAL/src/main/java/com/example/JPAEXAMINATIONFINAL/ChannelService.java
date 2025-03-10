@@ -14,25 +14,39 @@ public class ChannelService {
 
     ChannelRepository repo;
 
-    public ChannelService(EntityManager em, ChannelRepository repo) {
-        this.em = em;
+    public ChannelService( ChannelRepository repo, EntityManager em) {
         this.repo = repo;
+        this.em = em;
     }
+
     public Channel addChannel(Channel c) {
-         return null;
+        em.clear();
+
+        return repo.save(c);
     }
-    public List<Channel> getChannel(Long id) {
-        return null;
+    public List<Channel> getChannel() {
+        List<Channel> channels = repo.findAll();
+        return channels;
     }
-    public Channel deleteChannel(Long id) {
-        return null;
+    public void deleteChannel(Long id) {
+        repo.deleteById(id);
     }
-    public Channel addmessage(){
-        return null;
+
+    public void deleteMessageFromChannel(Long id,String message) {
+        repo.deleteById(id);
     }
-    public Channel getAllMessagesFromChannel(Long id) {
-        return null;
+    public Channel addMessageToChannel(Channel c,long id,String message) {
+        em.clear();
+        return repo.save(c);
     }
+    public Channel updateChannelMessage(Channel newChannel) {
+        return repo.save(newChannel);
+    }
+    public List<Channel> getAllMessagesFromChannel(Long id) {
+        List<Channel> channels = repo.findAll();
+        return channels;
+    }
+
 
 
 }
