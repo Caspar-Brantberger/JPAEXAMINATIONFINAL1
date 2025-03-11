@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface ChannelRepository extends JpaRepository<Channel, Integer> {
-Optional<Channel> findByChannelName(String channelName);
+public interface ChannelRepository extends JpaRepository<Channel, Long> {
+Optional<Channel> findById(Long id);
 
 }

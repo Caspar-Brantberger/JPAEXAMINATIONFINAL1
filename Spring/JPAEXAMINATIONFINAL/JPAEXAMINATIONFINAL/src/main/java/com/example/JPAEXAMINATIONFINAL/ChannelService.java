@@ -30,18 +30,18 @@ public class ChannelService {
         return channels;
     }
     public Optional<Channel> getChannelById(Long id) {
-        return repo.findById(Math.toIntExact(id));
+        return repo.findById((long) Math.toIntExact(id));
     }
     public void deleteChannel(Long id) {
-        repo.deleteById(Math.toIntExact(id));
+        repo.deleteById((long) Math.toIntExact(id));
     }
 
     public void deleteMessageFromChannel(long messageId) {
-        repo.deleteById((int) messageId);
+        repo.deleteById((long) messageId);
     }
     public Channel updateMessageToChannel(Channel newChannel) {
 
-        return repo.findById(Math.toIntExact(newChannel.getId())).map(channel -> {
+        return repo.findById((long) Math.toIntExact(newChannel.getId())).map(channel -> {
             channel.setMessage(newChannel.getMessage());
             return repo.save(channel);
         }).orElse(null);
