@@ -1,6 +1,7 @@
 package com.example.JPAEXAMINATIONFINAL;
 
 import jakarta.validation.Valid;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,11 +23,12 @@ public class ChannelController {
         return channelService.getChannel();
     }
     @GetMapping("/{id}")
-    public Optional<Channel> getChannelById(@PathVariable Long id) {
-        Optional<Channel> channel = channelService.getChannelById(id);
+    public ResponseEntity <Channel> getChannelAllMessagesWithId(@PathVariable Long id) {
+        Channel channel = channelService.getAllMessagesFromChannel(id);
 
-        return channelService.getChannelById(id);
+        return ResponseEntity.ok(channel);
     }
+
 
     @PostMapping
     public ResponseEntity<Channel> createChannelByRequest(@Valid @RequestBody Channel channel) {

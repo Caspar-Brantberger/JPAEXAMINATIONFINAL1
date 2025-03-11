@@ -1,5 +1,8 @@
 package com.example.JPAEXAMINATIONFINAL;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,6 +27,7 @@ public class Message {
     @JoinColumn(name = "channel_id",nullable = false)
     @Getter
     @Setter
+    @JsonBackReference
     private Channel channel;
 
     public Message(String message, Channel channel) {

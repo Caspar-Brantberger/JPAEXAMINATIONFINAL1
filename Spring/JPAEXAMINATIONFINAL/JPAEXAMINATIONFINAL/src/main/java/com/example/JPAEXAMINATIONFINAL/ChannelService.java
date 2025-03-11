@@ -2,6 +2,7 @@ package com.example.JPAEXAMINATIONFINAL;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -51,9 +52,8 @@ public class ChannelService {
         addChannel(newChannel);
         return repo.save(newChannel);
     }
-    public List<Channel> getAllMessagesFromChannel(Long id) {
-        List<Channel> channels = repo.findAll();
-        return channels;
+    public Channel getAllMessagesFromChannel(Long id) {
+        return repo.findByIdWithMessages(id).orElse(null);
     }
 
 
