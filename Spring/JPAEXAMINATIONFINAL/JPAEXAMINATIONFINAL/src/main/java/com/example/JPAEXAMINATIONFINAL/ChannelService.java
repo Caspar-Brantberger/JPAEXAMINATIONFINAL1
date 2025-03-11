@@ -37,21 +37,6 @@ public class ChannelService {
         repo.deleteById((long) Math.toIntExact(id));
     }
 
-    public void deleteMessageFromChannel(long messageId) {
-        repo.deleteById((long) messageId);
-    }
-    public Channel updateMessageToChannel(Channel newChannel) {
-
-        return repo.findById((long) Math.toIntExact(newChannel.getId())).map(channel -> {
-            channel.setMessage(newChannel.getMessage());
-            return repo.save(channel);
-        }).orElse(null);
-    }
-    public Channel addChannelMessage(Channel newChannel) {
-        em.clear();
-        addChannel(newChannel);
-        return repo.save(newChannel);
-    }
     public Channel getAllMessagesFromChannel(Long id) {
         return repo.findByIdWithMessages(id).orElse(null);
     }

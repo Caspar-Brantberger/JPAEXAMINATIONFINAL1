@@ -44,10 +44,6 @@ public class Channel {
     private String message;
 
 
-    @Getter
-    @Setter
-    private Long messageId;
-
     public void add(Message message){
         this.messages.add(message);
         message.setChannel(this);
