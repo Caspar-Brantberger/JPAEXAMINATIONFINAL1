@@ -6,6 +6,9 @@ import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table( name = "channels")
 public class Channel {
@@ -28,6 +31,11 @@ public class Channel {
     @Size(min = 2, max = 60 , message = "Channel description must be between 2 and 60 characters")
     private String channelDescription;
 
+
+    @OneToMany(mappedBy = "channel", cascade = CascadeType.ALL)
+    private List<Message> messages;
+
+
     @Getter
     @Setter
     private String message;
@@ -37,6 +45,10 @@ public class Channel {
     @Setter
     private Long messageId;
 
+    public void add(Message message){
+        this.messages.add(message);
+        message.setChannel(this);
+    }
     public Channel() {
    }
 
