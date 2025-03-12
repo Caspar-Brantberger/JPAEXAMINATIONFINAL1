@@ -19,7 +19,16 @@ public class MessageService {
         channel.add(message);
        return messageRepository.save(message);
     }
-    //DeleteMessage
 
-    //UppdateMessage
+    //Funkar inte
+    public void deleteMessage(Long id) {
+        messageRepository.deleteById(id);
+
+    }
+
+    public Message updateMessage(Long id, String newMessage) {
+        Message message = messageRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Message not found"));
+        message.setMessage(newMessage);
+        return messageRepository.save(message);
+    }
 }

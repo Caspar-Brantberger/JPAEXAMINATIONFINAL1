@@ -18,4 +18,14 @@ public class MessageController {
         Message message = messageService.addMessage(id, newMessage);
         return ResponseEntity.ok(message);
     }
+    @DeleteMapping("/{id}")
+    public void deleteMessage(@PathVariable Long id) {
+        messageService.deleteMessage(id);
+    }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Message> UpdateMessage(@PathVariable Long id,@RequestBody String newMessage) {
+        Message message = messageService.updateMessage(id,newMessage);
+        return ResponseEntity.ok(message);
+    }
 }

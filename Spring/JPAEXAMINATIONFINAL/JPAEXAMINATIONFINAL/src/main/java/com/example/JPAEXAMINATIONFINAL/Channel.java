@@ -41,6 +41,7 @@ public class Channel {
 
     @Getter
     @Setter
+    @NotBlank(message = "Write something fun! Message cannot be blank.")
     private String message;
 
 

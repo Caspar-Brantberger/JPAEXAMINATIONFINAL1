@@ -14,5 +14,4 @@ Optional<Channel> findById(Long id);
 
 @Query("SELECT c from Channel c LEFT JOIN FETCH c.messages WHERE c.id = :id")
 Optional<Channel> findByIdWithMessages(@Param("id") Long id);
-
 }
