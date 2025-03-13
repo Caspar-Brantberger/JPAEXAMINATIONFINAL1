@@ -30,9 +30,7 @@ public class ChannelService {
         List<Channel> channels = repo.findAll();
         return channels;
     }
-    public Optional<Channel> getChannelById(Long id) {
-        return repo.findById((long) Math.toIntExact(id));
-    }
+
     public void deleteChannel(Long id) {
         repo.deleteById((long) Math.toIntExact(id));
     }

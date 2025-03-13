@@ -1,5 +1,6 @@
 package com.example.JPAEXAMINATIONFINAL;
 
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 @Service
