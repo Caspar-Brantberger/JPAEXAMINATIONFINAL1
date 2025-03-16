@@ -1,5 +1,6 @@
 package com.example.JPAEXAMINATIONFINAL;
 
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
@@ -21,9 +22,10 @@ public class MessageService {
        return messageRepository.save(message);
     }
 
-    //Funkar inte
     public void deleteMessage(Long id) {
-        messageRepository.deleteById(id);
+        Message message = messageRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Message not found"));
+        messageRepository.delete(message);
 
     }
 

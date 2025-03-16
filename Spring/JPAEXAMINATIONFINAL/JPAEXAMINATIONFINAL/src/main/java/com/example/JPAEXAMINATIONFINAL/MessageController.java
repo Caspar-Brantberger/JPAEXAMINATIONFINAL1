@@ -13,11 +13,12 @@ public class MessageController {
         this.messageService = messageService;
     }
 
-    @PutMapping("/{id}")
+    @PostMapping("/{id}")
     public ResponseEntity<Message> addMessage(@PathVariable Long id,@RequestBody String newMessage) {
         Message message = messageService.addMessage(id, newMessage);
         return ResponseEntity.ok(message);
     }
+
     @DeleteMapping("/{id}")
     public void deleteMessage(@PathVariable Long id) {
         messageService.deleteMessage(id);
