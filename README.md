@@ -1,11 +1,11 @@
-# Vällkonmnen till mitt skolprojekt databaser med Spring JPA.
+# Vällkomnen till mitt skolprojekt databaser med Spring JPA.
 
 För att använda detta korrekt behöver du postman samt skriva in på ett korrekt sätt.
 Lista alla kanaler:
 Get
 localhost:8080/channel
 
-Lista specifika kanaler och se meddelanden från det kanalen:
+Lista specifika kanaler och se meddelanden från den kanalen:
 Get
 localhost:8080/channel/{id}
 Id på kanalen.
@@ -24,7 +24,7 @@ localhost:8080/channel/{id}
 Id på kanalen.
 
 Lägga till ett meddelande
-Put
+Post
 localhost:8080/messages/{id}
 id på  kanalen.
 {
@@ -38,6 +38,7 @@ Uppdatera ett meddelande
 Put
 localhost:8080/messages/update/{id}
 id på meddelandet.
+Syntax som tex "Another message": "text", eller liknande.
 
 Ta bort ett meddelande
 Delete
